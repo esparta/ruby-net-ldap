@@ -26,8 +26,8 @@ jobs:
         ports:
           - 389:389
           - 636:636
-        volumes:
-          - "$(pwd)"/test/fixtures/ldif:/container/service/slapd/assets/config/bootstrap/ldif/custom
+        # volumes:
+        #   - "$(pwd)"/test/fixtures/ldif:/container/service/slapd/assets/config/bootstrap/ldif/custom
 
     strategy:
       matrix:
@@ -60,6 +60,6 @@ jobs:
     #       --copy-service \
     #       --loglevel debug \
     - name: Install dependencies
-      run: bundle install
+      run: pwd; bundle install
     - name: Run tests
       run: bundle exec rake ci
