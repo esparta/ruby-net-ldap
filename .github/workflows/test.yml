@@ -26,6 +26,9 @@ jobs:
         ports:
           - 389:389
           - 636:636
+        options: >-
+          --hostname ldap.example.org
+          --volume ${{ github.workspace }}/test/fixtures/ldif:/container/service/slapd/assets/config/bootstrap/ldif/custom
         # volumes:
         #   - "$(pwd)"/test/fixtures/ldif:/container/service/slapd/assets/config/bootstrap/ldif/custom
     strategy:
