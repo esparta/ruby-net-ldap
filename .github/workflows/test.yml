@@ -15,9 +15,9 @@ on:
 
 jobs:
   test:
-
+    env:
+      INTEGRATION: openldap
     runs-on: ubuntu-latest
-
     services:
       openldap:
         image: osixia/openldap:1.3.0
@@ -28,7 +28,6 @@ jobs:
           - 636:636
         # volumes:
         #   - "$(pwd)"/test/fixtures/ldif:/container/service/slapd/assets/config/bootstrap/ldif/custom
-
     strategy:
       matrix:
         ruby:
@@ -36,7 +35,6 @@ jobs:
           - "2.6"
           - "2.7"
           - "jruby-9.2"
-
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby ${{ matrix.ruby }}
